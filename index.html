@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The CXO Resume — New Yorker Style</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Aboreto:wght@400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+
+    :root {
+      --bg: #fff1e5;
+      --ink: #000;
+      --muted: #666;
+      --rule: #000;
+      --soft: #ddd;
+      --button-bg: #000;
+      --button-color: #fff;
+      --button-hover-bg: #333;
+    }
+
+    body {
+      font-family: 'Crimson Text', serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #2c2c2c;
+      background-color: var(--bg);
+      margin: 0;
+      padding: 40px 20px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Masthead */
+    .masthead {
+      text-align: center;
+      border-bottom: 3px solid var(--rule);
+      padding: 0 0 20px 0;
+      margin: 0 0 40px 0;
+    }
+    .magazine-title {
+      font-family: 'Aboreto', serif;
+      font-size: 56px;
+      font-weight: 400;
+      letter-spacing: 10px;
+      color: var(--ink);
+      margin: 0 0 6px 0;
+      text-transform: uppercase;
+    }
+    @media (max-width: 600px){
+      .magazine-title{ font-size:44px; letter-spacing:8px; }
+    }
+    .issue-info{
+      font-family:'IBM Plex Sans',sans-serif; font-size:11px; color:var(--muted);
+      letter-spacing:1px; text-transform:uppercase;
+      display:flex; gap:10px; align-items:center; justify-content:center;
+    }
+    .meta-link{ position:relative; text-decoration:none; color:#444; padding-bottom:2px; }
+    .meta-link::after{ content:""; position:absolute; left:0; bottom:-1px; height:1px; width:0%; background:currentColor; transition:width .25s; }
+    .meta-link:hover::after{ width:100%; }
+    .dot{ opacity:.5; }
+
+    /* Article */
+    .article-header{ margin:60px 0 40px 0; }
+    .section-title{
+      font-family:'IBM Plex Sans',sans-serif; font-size:11px; color:#666;
+      letter-spacing:2px; text-transform:uppercase; margin-bottom:20px; font-weight:500;
+    }
+    .article-title{
+      font-size:36px; font-weight:400; line-height:1.1; color:#000; margin:0 0 20px 0;
+    }
+    .article-subtitle{
+      font-size:20px; font-style:italic; color:#555; margin:0 0 30px 0; font-weight:400;
+    }
+
+    .dropcap{
+      float:left; font-size:70px; line-height:50px; padding-top:8px; padding-right:8px; padding-left:3px;
+      font-weight:400; color:#000;
+    }
+    .article-content{ font-size:18px; line-height:1.7; color:#2c2c2c; text-align:justify; hyphens:auto; }
+    .article-content p{ margin:0 0 20px 0; }
+
+    .pullquote{
+      font-size:24px; font-style:italic; color:#000; margin:40px 60px; padding:20px 0;
+      border-top:1px solid #ddd; border-bottom:1px solid #ddd; text-align:center; line-height:1.4;
+    }
+    .subheading{ font-size:22px; font-weight:600; color:#000; margin:40px 0 20px 0; line-height:1.3; }
+
+    .author-bio{
+      margin-top:60px; padding-top:30px; border-top:1px solid #ddd;
+      font-family:'IBM Plex Sans',sans-serif; font-size:14px; color:#666; line-height:1.5;
+    }
+
+    /* Discovery Call (kept as-is) */
+    .cta-box{
+      background-color:var(--bg);
+      border:1px solid #ddd; margin:40px 0; padding:30px; text-align:center;
+    }
+    .cta-title{
+      font-family:'Aboreto',serif; font-size:24px; font-weight:400; color:#000; margin:0 0 15px 0; letter-spacing:2px; text-transform:uppercase;
+    }
+    .cta-description{
+      font-family:'Crimson Text',serif; font-size:16px; color:#555; margin:0 0 25px 0; line-height:1.5;
+    }
+    .cta-button{
+      background-color:#000; color:#fff; font-family:'IBM Plex Sans',sans-serif; font-size:14px; font-weight:500;
+      text-transform:uppercase; letter-spacing:2px; padding:15px 40px; border:none; cursor:pointer; text-decoration:none; display:inline-block; margin-bottom:20px;
+      transition: background-color .25s;
+    }
+    .cta-button:hover{ background-color:#333; }
+    .cta-legal{ font-family:'IBM Plex Sans',sans-serif; font-size:12px; color:#777; line-height:1.4; margin:0; }
+    .cta-legal a{ color:#000; text-decoration:underline; }
+    .cred-line{ font-family:'IBM Plex Sans',sans-serif; font-size:12px; color:#777; margin-top:8px; text-align:center; }
+    .center-line{ text-align:center; margin-top:6px; font-family:'IBM Plex Sans',sans-serif; font-size:12px; color:#777; }
+
+    /* First CTA (match discovery call look) */
+    .case-box{
+      border:1px solid #dadada;
+      padding:28px;
+      margin:30px 0;
+      text-align:center;
+      background:transparent;
+    }
+    .case-title{ /* matches .cta-title */
+      font-family:'Aboreto',serif; font-size:24px; font-weight:400; color:#000; margin:0 0 14px 0; letter-spacing:2px; text-transform:uppercase;
+    }
+    .case-lead{ /* matches .cta-description */
+      font-family:'Crimson Text',serif; font-size:16px; color:#555; margin:0 0 22px 0; line-height:1.5;
+    }
+    .case-button{ /* matches .cta-button */
+      background-color:#000; color:#fff; font-family:'IBM Plex Sans',sans-serif; font-size:14px; font-weight:500;
+      text-transform:uppercase; letter-spacing:2px; padding:15px 40px; border:none; cursor:pointer; display:inline-block;
+      transition: background-color .25s;
+    }
+    .case-button:hover{ background-color:#333; }
+
+    /* SEO Footer */
+    .seo-footer {
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 2px solid var(--ink);
+      text-align: center;
+    }
+    .footer-title {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin: 0 0 25px 0;
+      font-weight: 500;
+    }
+    .footer-links { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; margin:0 0 40px 0; }
+    .footer-link {
+      font-family:'Crimson Text',serif; font-size:18px; color:var(--ink); text-decoration:none; position:relative; padding:5px 0; transition:color .25s;
+    }
+    .footer-link:hover { color: var(--muted); }
+    .footer-link::after { content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background-color:var(--ink); transition:width .25s; }
+    .footer-link:hover::after { width:100%; }
+    .footer-link.linkedin { font-style: italic; }
+    .footer-divider { width: 60px; height: 1px; background-color: var(--soft); margin: 20px auto; }
+    .footer-copyright {
+      font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin: 0;
+    }
+    .seo-section { margin: 40px 0; text-align: left; }
+    .seo-title { font-family:'IBM Plex Sans',sans-serif; font-size:13px; color:var(--ink); letter-spacing:2px; text-transform:uppercase; margin:0 0 30px 0; font-weight:500; text-align:center; }
+    .seo-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:50px; margin:0 0 30px 0; }
+    .seo-column { text-align:left; }
+    .seo-column-title {
+      font-family:'IBM Plex Sans',sans-serif; font-size:11px; color:var(--muted); letter-spacing:1px; text-transform:uppercase; margin:0 0 15px 0; font-weight:500; padding-bottom:8px; border-bottom:1px solid var(--soft);
+    }
+    .seo-links { display:flex; flex-direction:column; gap:8px; }
+    .seo-link {
+      font-family:'Crimson Text',serif; font-size:14px; color:var(--ink); text-decoration:none; position:relative; padding:2px 0; transition:color .25s; line-height:1.4;
+    }
+    .seo-link:hover { color: var(--muted); }
+    .seo-link::after { content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background-color:var(--muted); transition:width .25s; }
+    .seo-link:hover::after { width:100%; }
+    .business-links { display:flex; justify-content:center; gap:30px; margin:0 0 30px 0; flex-wrap:wrap; }
+    .business-link {
+      font-family:'IBM Plex Sans',sans-serif; font-size:11px; color:var(--muted); text-decoration:none; letter-spacing:1px; text-transform:uppercase; position:relative; padding:3px 0; transition:color .25s;
+    }
+    .business-link:hover { color: var(--ink); }
+    .business-link::after { content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background-color:var(--ink); transition:width .25s; }
+    .business-link:hover::after { width:100%; }
+
+    @media (max-width: 600px) {
+      .footer-links { flex-direction: column; gap: 20px; }
+      .footer-link { font-size: 16px; }
+      .seo-grid { grid-template-columns: 1fr; gap: 30px; }
+    }
+    @media (max-width: 768px) and (min-width: 601px) {
+      .footer-links { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Masthead -->
+  <header class="masthead">
+    <h1 class="magazine-title">The CXO Resume</h1>
+    <div class="issue-info">
+      <a class="meta-link" href="./thought-leadership/">Thought Leadership</a>
+      <span class="dot">•</span>
+      <a class="meta-link" href="./career-edition/">Career Edition</a>
+    </div>
+  </header>
+
+  <article>
+    <div class="article-header">
+      <div class="section-title">Profiles / Leadership / Transitions</div>
+      <h1 class="article-title">Resumes for Leaders Who’ve Lived It</h1>
+      <h2 class="article-subtitle">Bespoke, founder-led resume writing for CXOs ready for what’s next.</h2>
+    </div>
+
+    <div class="article-content">
+      <p><span class="dropcap">N</span>o templates. No tech. Just your story—told right. This is the philosophy behind a growing movement in executive career services, one that recognizes a fundamental truth: most executive resumes are merely lists of roles, when they should be leadership narratives that help decision-makers connect the dots from where you’ve been to where you’re going.</p>
+
+      <!-- FIRST CTA -->
+      <section class="case-box" aria-labelledby="caseTitle1">
+        <h3 class="case-title" id="caseTitle1">Leader’s Narrative</h3>
+        <p class="case-lead">Discover how CXO narratives transform careers—case study inside.</p>
+        <button class="case-button" id="openCasesInline" type="button">Download Case Study</button>
+      </section>
+
+      <h3 class="subheading">Why This Works</h3>
+      <p>The traditional resume approach fails C-suite executives because it treats decades of leadership experience like a chronological inventory. But boards, investors, and search partners don’t hire inventory—they hire vision, judgment, and the ability to navigate what’s next. When Maria, a CFO whose company was acquired, first approached us, her resume read like a financial metrics checklist. Her real story, however, was about leading three successful integrations while building teams that outlasted the deals. That narrative, properly positioned, opened conversations about transformation roles that her bullet-point resume never could. We help executives like Maria understand that their resume should frame the future, not just catalog the past.</p>
+
+      <h3 class="subheading">Who We Work With</h3>
+      <p>Our clients span high-stakes transitions: CXOs navigating layoffs, mergers, or pivots; first-time executives moving into the C-suite; board aspirants; founders post-exit; senior military leaders crossing into enterprise; and non-linear paths that resist templates. What unites them is the need for narrative architecture—not formatting.</p>
+
+      <h3 class="subheading">Our Process</h3>
+      <p>We begin with a discovery call to map the contours of your leadership story and define the positioning that serves your next chapter. Then a deep-dive interview (often over multiple sessions) surfaces patterns, choices, and inflection points. From there we craft your brand narrative and resume, iterate with structured feedback, and deliver materials that feel unmistakably yours—built for sophisticated readers.</p>
+
+      <h3 class="subheading">What You Get</h3>
+      <p>A bespoke executive resume that reads like the opening chapter of your next phase, plus a positioning narrative many clients reuse for networking and interviews. Optional add-ons: LinkedIn alignment and board-bio development. Each asset works as part of a coherent leadership brand.</p>
+
+      <div class="pullquote">
+        “Your process helped me understand my story. I got two interviews in the first month, but more importantly, I finally knew how to talk about what I bring.”
+      </div>
+
+      <h3 class="subheading">A Founder’s Note</h3>
+      <p>This practice exists for leaders whose stories don’t fit templates. After watching exceptional executives undersell themselves with conventional formats, we built a discovery process that reveals themes even you might have missed. At this level, narrative clarity isn’t cosmetic—it’s core to leadership.</p>
+
+      <h3 class="subheading">Ready to Begin?</h3>
+      <p>Whether your next move is a board seat, a transformation role, or a new industry, the story you tell will shape every conversation. The discovery call is designed to add value from minute one.</p>
+
+      <!-- Discovery Call CTA -->
+      <div class="cta-box">
+        <h3 class="cta-title">Executive Discovery Call</h3>
+        <p class="cta-description">Confidential consultation for senior executives ready to transform their career narrative through bespoke storytelling and strategic positioning.</p>
+        <a href="https://thecxoresume.com" class="cta-button" rel="noopener">Book Discovery Call</a>
+        <p class="cta-legal">
+          By booking a call, you agree to our <a href="./confidentiality-agreement/">confidentiality agreement</a> and acknowledge our <a href="./privacy-policy/">privacy policy</a>.
+        </p>
+        <p class="cred-line">Pricing — starts from <strong>$499</strong></p>
+        <div class="center-line">Confidential • Bespoke • Executive-Only</div>
+      </div>
+    </div>
+
+    <div class="author-bio">
+      <strong>The CXO Resume</strong> is a bespoke writing practice founded on the belief that executive transitions require narrative clarity, not template efficiency. We help leaders articulate not just where they’ve been—but where they’re going next.
+    </div>
+  </article>
+
+  <!-- Case Studies Modal -->
+  <dialog id="caseModal" aria-labelledby="caseTitle" aria-modal="true" role="dialog">
+    <div class="modal-header" style="background:#000;color:#fff;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Sans',sans-serif;letter-spacing:1px;text-transform:uppercase;font-size:12px;">
+      <h2 class="modal-title" id="caseTitle" style="margin:0;">Indicative Case Studies</h2>
+      <button class="modal-close" type="button" aria-label="Close case studies" id="closeCases" style="background:transparent;border:0;color:#fff;font-size:22px;line-height:1;cursor:pointer;">×</button>
+    </div>
+    <div class="modal-body" style="background:#fff;padding:24px 24px 10px 24px;">
+      <h3>Ex-Senior UNICEF Professional</h3>
+      <p>Translated mission-led impact into enterprise language without losing purpose—reframed cross-country program leadership as P&amp;L-adjacent stewardship and stakeholder orchestration.</p>
+
+      <h3>CHRO Profile Makeover</h3>
+      <p>Shifted from policy custodian to value architect—built a story around workforce strategy, culture change and CEO-ready succession outcomes.</p>
+
+      <h3>Head of Investments, Leading M&amp;A</h3>
+      <p>Cut through deal lists to surface judgment: thesis craft, risk selection, integration discipline—and a clear through-line to transformation roles.</p>
+
+      <h3>Associate Partner, Big Four</h3>
+      <p>Turned practice metrics into narrative: category creation, client change wins, and team scale—positioned for Partner-track and PE-portfolio ops roles.</p>
+
+      <h3>Luxury Sector CXO</h3>
+      <p>From brand aura to business engine—linked product, pricing, and clienteling to cash conversion and durable growth.</p>
+    </div>
+    <div class="modal-footer" style="background:#fafafa;padding:14px 24px 18px 24px;display:flex;gap:10px;justify-content:flex-end;border-top:1px solid #eee;">
+      <a class="btn" href="./career-edition/" rel="noopener" style="font-family:'IBM Plex Sans',sans-serif;font-size:14px;letter-spacing:.5px;padding:10px 16px;border:1px solid #222;background:#fff;color:#111;text-decoration:none;">See More</a>
+      <a class="btn primary" href="./assets/CXO-Resume-Case-Studies.pdf" download style="font-family:'IBM Plex Sans',sans-serif;font-size:14px;letter-spacing:.5px;padding:10px 16px;border:1px solid #000;background:#000;color:#fff;text-decoration:none;">Download Case Study PDF</a>
+    </div>
+  </dialog>
+
+  <!-- SEO Footer -->
+  <footer class="seo-footer">
+    <div class="seo-section">
+      <div class="seo-grid">
+        <div class="seo-column">
+          <div class="seo-column-title">Core Services</div>
+          <nav class="seo-links">
+            <a href="./services/" class="seo-link">All Services</a>
+            <a href="./pricing/" class="seo-link">Pricing</a>
+            <a href="./process/" class="seo-link">Our Process</a>
+            <a href="./consultation/" class="seo-link">Book Consultation</a>
+            <a href="./faq/" class="seo-link">FAQ</a>
+          </nav>
+
+          <div class="seo-column-title" style="margin-top: 25px;">Specialized Services</div>
+          <nav class="seo-links">
+            <a href="./linkedin-optimization/" class="seo-link">LinkedIn Optimization</a>
+            <a href="./board-bio/" class="seo-link">Board Bio</a>
+            <a href="./board-ready-resumes/" class="seo-link">Board Resumes</a>
+            <a href="./post-acquisition-resumes/" class="seo-link">Post-M&amp;A Transitions</a>
+          </nav>
+        </div>
+
+        <div class="seo-column">
+          <div class="seo-column-title">Content &amp; Insights</div>
+          <nav class="seo-links">
+            <a href="./thought-leadership/" class="seo-link">Thought Leadership</a>
+            <a href="./career-edition/" class="seo-link">Career Edition</a>
+            <a href="./executive-insights/" class="seo-link">Executive Insights</a>
+            <a href="./resume-tips/" class="seo-link">Resume Tips</a>
+            <a href="./transition-guides/" class="seo-link">Transition Guides</a>
+          </nav>
+
+          <div class="seo-column-title" style="margin-top: 25px;">Authority &amp; Proof</div>
+          <nav class="seo-links">
+            <a href="./case-studies/" class="seo-link">Case Studies</a>
+            <a href="./industries/" class="seo-link">Industries</a>
+            <a href="./executive-roles/" class="seo-link">Executive Roles</a>
+            <a href="./about/" class="seo-link">About Me</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <nav class="business-links" role="navigation" aria-label="Business information">
+      <a href="./contact/" class="business-link">Contact</a>
+      <a href="./privacy-policy/" class="business-link">Privacy Policy</a>
+      <a href="./confidentiality-agreement/" class="business-link">Confidentiality Agreement</a>
+      <a href="./terms/" class="business-link">Terms of Service</a>
+      <a href="./sitemap/" class="business-link">Sitemap</a>
+    </nav>
+
+    <p class="footeropyright" style="font-family:'IBM Plex Sans',sans-serif;font-size:11px;color:#666;letter-spacing:1px;text-transform:uppercase;margin:0;">© 2025 The CXO Resume • All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const modal = document.getElementById('caseModal');
+    const openInline = document.getElementById('openCasesInline');
+    const closeBtn = document.getElementById('closeCases');
+
+    openInline.addEventListener('click', () => { if (typeof modal.showModal === 'function') modal.showModal(); });
+    closeBtn.addEventListener('click', () => modal.close());
+  </script>
+</body>
+</html>
