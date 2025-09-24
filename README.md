@@ -1,13 +1,13 @@
-# CXO Resume Brand Guidelines & CSS Framework
+# The CXO Resume Brand Guidelines & CSS Framework
 
 ## Design Philosophy
-The CXO Resume brand embodies sophisticated editorial design inspired by The New Yorker and Financial Times, creating a premium experience appropriate for C-suite executives.
+The CXO Resume brand embodies sophisticated design creating a premium experience appropriate for C-suite executives.
 
 ## Core CSS Variables
 
 ```css
 :root {
-  --bg: #fff1e5;          /* Financial Times pink background */
+  --bg: #fff1e5;          /* Light pink background */
   --ink: #000;            /* Pure black for text */
   --muted: #666;          /* Gray for secondary text */
   --rule: #000;           /* Black for borders/rules */
@@ -430,7 +430,7 @@ body {
 ## Brand Guidelines
 
 ### Colors
-- **Primary Background**: #fff1e5 (Financial Times salmon-pink)
+- **Primary Background**: #fff1e5 (salmon-pink)
 - **Text**: #000 (pure black) and #2c2c2c (dark gray for body)
 - **Secondary**: #666 (medium gray) and #777 (lighter gray for legal text)
 - **Borders**: #ddd (light gray) and #dadada (CTA borders)
@@ -458,4 +458,4 @@ body {
 - **Article Pages**: Standard article structure with back navigation
 - **Legal Pages**: Formal structure with legal sections and proper formatting
 
-This framework ensures pixel-perfect consistency across all CXO Resume materials while maintaining the sophisticated, editorial aesthetic appropriate for C-suite executives.
+This framework ensures pixel-perfect consistency across all The CXO Resume materials while maintaining the sophisticated,aesthetic appropriate for C-suite executives.
