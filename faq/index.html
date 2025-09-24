@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ — The CXO Resume</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Aboreto:wght@400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+
+    :root {
+      --bg: #fff1e5;
+      --ink: #000;
+      --muted: #666;
+      --rule: #000;
+      --soft: #ddd;
+    }
+
+    body {
+      font-family: 'Crimson Text', serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #2c2c2c;
+      background-color: var(--bg);
+      margin: 0;
+      padding: 40px 20px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Back to Home Link */
+    .back-link {
+      font-family:'IBM Plex Sans',sans-serif; font-size:11px; color:var(--muted);
+      text-transform:uppercase; letter-spacing:1px; text-decoration:none;
+      margin-bottom:20px; display:inline-block; position:relative; padding-bottom:2px;
+    }
+    .back-link::after{ 
+      content:""; position:absolute; left:0; bottom:-1px; height:1px; width:0%; 
+      background:currentColor; transition:width .25s; 
+    }
+    .back-link:hover::after{ width:100%; }
+    .back-link:hover{ color:var(--ink); }
+
+    /* Masthead - exactly matching your design */
+    .masthead {
+      text-align: center;
+      border-bottom: 3px solid var(--rule);
+      padding: 0 0 20px 0;
+      margin: 0 0 40px 0;
+    }
+    .magazine-title {
+      font-family: 'Aboreto', serif;
+      font-size: 56px;
+      font-weight: 400;
+      letter-spacing: 10px;
+      color: var(--ink);
+      margin: 0 0 6px 0;
+      text-transform: uppercase;
+    }
+    @media (max-width: 600px){
+      .magazine-title{ font-size:44px; letter-spacing:8px; }
+    }
+    .issue-info{
+      font-family:'IBM Plex Sans',sans-serif; font-size:11px; color:var(--muted);
+      letter-spacing:1px; text-transform:uppercase;
+      display:flex; gap:10px; align-items:center; justify-content:center;
+    }
+    .meta-link{ 
+      position:relative; text-decoration:none; color:#444; padding-bottom:2px; 
+    }
+    .meta-link::after{ 
+      content:""; position:absolute; left:0; bottom:-1px; height:1px; width:0%; 
+      background:currentColor; transition:width .25s; 
+    }
+    .meta-link:hover::after{ width:100%; }
+    .dot{ opacity:.5; }
+
+    /* Article - matching your exact structure */
+    .article-header{ margin:60px 0 40px 0; }
+    .section-title{
+      font-family:'IBM Plex Sans',sans-serif; font-size:11px; color:#666;
+      letter-spacing:2px; text-transform:uppercase; margin-bottom:20px; font-weight:500;
+    }
+    .article-title{
+      font-size:36px; font-weight:400; line-height:1.1; color:#000; margin:0 0 20px 0;
+    }
+    .article-subtitle{
+      font-size:20px; font-style:italic; color:#555; margin:0 0 30px 0; font-weight:400;
+    }
+
+    .article-content{ 
+      font-size:18px; line-height:1.7; color:#2c2c2c; text-align:justify; hyphens:auto; 
+    }
+    .article-content p{ margin:0 0 20px 0; }
+
+    .subheading{ 
+      font-size:22px; font-weight:600; color:#000; margin:40px 0 20px 0; line-height:1.3; 
+    }
+
+    /* FAQ Specific Styles */
+    .faq-section {
+      margin: 40px 0;
+    }
+
+    .faq-category {
+      margin-bottom: 50px;
+    }
+
+    .faq-category-title {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 13px;
+      color: var(--ink);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin: 0 0 30px 0;
+      font-weight: 500;
+      border-bottom: 1px solid var(--soft);
+      padding-bottom: 10px;
+    }
+
+    .faq-item {
+      margin-bottom: 30px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 0 0 15px 0;
+      line-height: 1.4;
+    }
+
+    .faq-answer {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #2c2c2c;
+      margin: 0;
+    }
+
+    .faq-answer em {
+      font-style: italic;
+    }
+
+    /* Case box for CTA */
+    .case-box{
+      border:1px solid #dadada;   
+      padding:28px;
+      margin:30px 0;
+      text-align:center;
+      background:transparent;
+    }
+    .case-title{
+      font-family:'Aboreto',serif; font-size:24px; font-weight:400; color:#000; 
+      margin:0 0 14px 0; letter-spacing:2px; text-transform:uppercase;
+    }
+    .case-lead{
+      font-family:'Crimson Text',serif; font-size:16px; color:#555; 
+      margin:0 0 22px 0; line-height:1.5;
+    }
+    .case-button{
+      background-color:#000; color:#fff; font-family:'IBM Plex Sans',sans-serif; 
+      font-size:14px; font-weight:500; text-transform:uppercase; letter-spacing:2px; 
+      padding:15px 40px; border:none; cursor:pointer; display:inline-block;
+      transition: background-color .25s; text-decoration:none;
+    }
+    .case-button:hover{ background-color:#333; }
+
+    @media print{
+      body{ font-size:14px; }
+      .magazine-title{ font-size:36px; }
+      .article-title{ font-size:28px; }
+    }
+  </style>
+
+  <!-- FAQ Schema for Google Rich Results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is The CXO Resume and how is it different from traditional resume services?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The CXO Resume is a founder-led, bespoke executive resume writing service that builds a leadership narrative to position leaders for boards and global opportunities."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why focus on a leadership narrative instead of a chronological list?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lists look backward. Leadership narratives look forward. They connect judgment, inflection points, and impact to future opportunities and board readiness."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does bespoke and founder-led mean?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bespoke means no templates; every resume is crafted from scratch. Founder-led means your narrative is shaped directly by an experienced executive career strategist."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who are your ideal clients?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CXOs, board aspirants, founders post-exit, senior military leaders in transition, and executives preparing for global or transformation roles."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you help executives with non-linear careers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Narrative architecture reframes complex or non-linear careers as evidence of agility, breadth, and leadership vision."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is your pricing structure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pricing starts at $499 for a bespoke executive resume, with tailored quotes for LinkedIn, board bios, and complex narrative work."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What about confidentiality and privacy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We operate under strict confidentiality. All client information, drafts, and documents remain private and secure."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Back to Home -->
+  <a href="../" class="back-link">← Back to Home</a>
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <h1 class="magazine-title">The CXO Resume</h1>
+    <div class="issue-info">
+      <a class="meta-link" href="../thought-leadership/">Thought Leadership</a>
+      <span class="dot">•</span>
+      <a class="meta-link" href="../career-edition/">Career Edition</a>
+    </div>
+  </header>
+
+  <article>
+    <div class="article-header">
+      <div class="section-title">FAQ / Questions / Answers</div>
+      <h1 class="article-title">Frequently Asked Questions</h1>
+      <h2 class="article-subtitle">Everything you need to know about our bespoke executive resume writing process.</h2>
+    </div>
+
+    <div class="article-content">
+      <div class="faq-section">
+        
+        <!-- Understanding the Service -->
+        <div class="faq-category">
+          <h3 class="faq-category-title">Understanding the Service</h3>
+
+          <div class="faq-item">
+            <h4 class="faq-question">What is <em>The CXO Resume</em> and how is it different from traditional resume services?</h4>
+            <p class="faq-answer">Most services give you formatting. We give you framing. <em>The CXO Resume</em> is founder-led, bespoke, and narrative-driven. We cut through titles and dates to surface what truly matters: your leadership arc. The difference is simple. Others document the past. We position you for the future.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4 class="faq-question">Why focus on a 'leadership narrative' instead of a chronological list?</h4>
+            <p class="faq-answer">Because lists are history. Narratives are strategy. A leadership narrative makes sense of inflection points, shows judgment in action, and connects what you have done to where you are going. It transforms a record into a roadmap.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4 class="faq-question">What does 'bespoke' and 'founder-led' mean here?</h4>
+            <p class="faq-answer">Bespoke means no templates. Every word is earned, every structure tailored. Founder-led means your story is not outsourced. It is shaped directly by someone who has spent decades in executive search and boardrooms, with the precision of lived context.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4 class="faq-question">What is your approach to writing executive resumes?</h4>
+            <p class="faq-answer">It is editorial rigor applied to careers. Intelligent restraint. Sharp sentences that carry weight. No clutter, no filler, no clichés. The result is a document that reads less like a ledger and more like a statement of leadership.</p>
+          </div>
+        </div>
+
+        <!-- Who Benefits -->
+        <div class="faq-category">
+          <h3 class="faq-category-title">Who Benefits</h3>
+
+          <div class="faq-item">
+            <h4 class="faq-question">Who are your ideal clients?</h4>
+            <p class="faq-answer">CXOs in transition, board aspirants, founders post-exit, senior military leaders stepping into corporate life, and executives taking global roles. In short, leaders at turning points where clarity of story shapes access to opportunity.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4 class="faq-question">Can you help executives with non-linear careers?</h4>
+            <p class="faq-answer">Yes. In fact, we thrive on complexity. Non-linear paths—entrepreneurship, cross-border pivots, portfolio careers—become liabilities when reduced to lists. Through narrative, they become proof of agility, breadth, and vision.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4 class="faq-question">Is this service for early-career professionals?</h4>
+            <p class="faq-answer">No. Early careers are about entry points. Our work begins where entry ends: at the level where positioning matters more than chronology, and narrative matters more than formatting.</p>
+          </div>
+        </div>
+
+        <!-- The Process -->
+        <div class="faq-category">
+          <h3 class="faq-category-title">The Process</h3>
+
+          <div class="faq-item">
+            <h4 class="faq-question">What does the discovery call involve?</h4>
+            <p class="faq-answer">It is not a sales pitch. It is a conversation about context: what you seek, what drives the transition, what the document must achieve. It frames the work ahead.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4 class="faq-question">What happens in the deep-dive interview?</h4>
+            <p class="faq-answer">It is not interrogation. It is excavation. We uncover the choices, the pivots, the inflection points. The stories you overlook because they feel obvious often prove decisive. That is where we dig.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4 class="faq-question">How long does the process take?</h4>
+            <p class="faq-answer">Two to three weeks. Enough time to interview, write, and refine. Short enough to serve urgent needs, long enough to honor editorial craft.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4 class="faq-question">How do feedback and iterations work?</h4>
+            <p class="faq-answer">You receive a draft within ten days. We refine together, cutting, sharpening, and aligning. The final version is not ours. It is yours—shaped with you, not for you.</p>
+          </div>
+        </div>
+
+        <!-- Deliverables & Outcomes -->
+        <div class="faq-category">
+          <h3 class="faq-category-title">Deliverables & Outcomes</h3>
+
+          <div class="faq-item">
+            <h4 class="faq-question">What do I receive?</h4>
+            <p class="faq-answer">A bespoke executive resume, architected from scratch. Alongside it, a positioning narrative: the through-line of your leadership, distilled into language that commands attention.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4 class="faq-question">What optional add-ons exist?</h4>
+            <p class="faq-answer">LinkedIn profiles rewritten with narrative integrity. Board bios designed for investors and nominations. Advisory on how to extend the narrative into media, decks, and speeches.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4 class="faq-question">How can the positioning narrative be used beyond the resume?</h4>
+            <p class="faq-answer">It becomes a master key. One story, told consistently, opens many doors—LinkedIn, board bios, interviews, media introductions. Multiplying your voice without fragmenting it.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4 class="faq-question">What outcomes can I expect?</h4>
+            <p class="faq-answer">We do not promise jobs. What we deliver is sharper positioning with search firms, stronger resonance with boards, and greater confidence in interviews. The outcome is clarity. Opportunity follows.</p>
+          </div>
+        </div>
+
+        <!-- Investment & Value -->
+        <div class="faq-category">
+          <h3 class="faq-category-title">Investment & Value</h3>
+
+          <div class="faq-item">
+            <h4 class="faq-question">What is the pricing structure?</h4>
+            <p class="faq-answer">Engagements begin at $499 for a bespoke executive resume. Pricing expands with scope—LinkedIn, board bios, complex narrative work. Each quote is tailored, because each leader is different.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4 class="faq-question">Why call this an investment, not an expense?</h4>
+            <p class="faq-answer">Because an executive role is measured in millions—of dollars, of influence, of outcomes. Clarity in how you present yourself compounds returns for years. That is investment.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4 class="faq-question">What about confidentiality and privacy?</h4>
+            <p class="faq-answer">Every client engagement is bound by discretion. Your drafts, documents, and data remain private. Many leaders are in sensitive transitions. For us, confidentiality is not policy. It is principle.</p>
+          </div>
+        </div>
+
+        <!-- Addressing Common Concerns -->
+        <div class="faq-category">
+          <h3 class="faq-category-title">Addressing Common Concerns</h3>
+
+          <div class="faq-item">
+            <h4 class="faq-question">I already have a resume. Why do I need another?</h4>
+            <p class="faq-answer">Most executive resumes read like obituaries: long, heavy, past tense. What you need is a positioning document—short, sharp, alive with purpose. That is the rewrite we deliver.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4 class="faq-question">How do you uncover themes I may have missed?</h4>
+            <p class="faq-answer">Because you lived them, they feel ordinary. To us, they are extraordinary. Through structured questioning, we surface decisions and pivots that reveal your leadership DNA.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4 class="faq-question">Is this ghostwriting, or is my input crucial?</h4>
+            <p class="faq-answer">It is collaboration. We bring structure, language, perspective. You bring substance, voice, authenticity. The alchemy lies in partnership, not substitution.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4 class="faq-question">How do you ensure relevance across industries and roles?</h4>
+            <p class="faq-answer">Context matters. We adapt narrative to align with sector, geography, and audience. Having worked with search firms and boards globally, we know the languages of finance, technology, social impact, and beyond.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA Box -->
+      <div class="case-box">
+        <h3 class="case-title">Still Have Questions?</h3>
+        <p class="case-lead">Every executive situation is unique. Book a discovery call to discuss your specific leadership narrative and career objectives.</p>
+        <a href="../consultation/" class="case-button">Book Discovery Call</a>
+      </div>
+    </div>
+  </article>
+</body>
+</html>
