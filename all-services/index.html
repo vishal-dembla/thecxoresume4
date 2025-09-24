@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Services — The CXO Resume</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Aboreto:wght@400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+
+    :root {
+      --bg: #fff1e5;
+      --ink: #000;
+      --muted: #666;
+      --rule: #000;
+      --soft: #ddd;
+    }
+
+    body {
+      font-family: 'Crimson Text', serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #2c2c2c;
+      background-color: var(--bg);
+      margin: 0;
+      padding: 40px 20px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Back to Home Link */
+    .back-link {
+      font-family:'IBM Plex Sans',sans-serif; font-size:11px; color:var(--muted);
+      text-transform:uppercase; letter-spacing:1px; text-decoration:none;
+      margin-bottom:20px; display:inline-block; position:relative; padding-bottom:2px;
+    }
+    .back-link::after{ 
+      content:""; position:absolute; left:0; bottom:-1px; height:1px; width:0%; 
+      background:currentColor; transition:width .25s; 
+    }
+    .back-link:hover::after{ width:100%; }
+    .back-link:hover{ color:var(--ink); }
+
+    /* Masthead */
+    .masthead {
+      text-align: center;
+      border-bottom: 3px solid var(--rule);
+      padding: 0 0 20px 0;
+      margin: 0 0 40px 0;
+    }
+    .magazine-title {
+      font-family: 'Aboreto', serif;
+      font-size: 56px;
+      font-weight: 400;
+      letter-spacing: 10px;
+      color: var(--ink);
+      margin: 0 0 6px 0;
+      text-transform: uppercase;
+    }
+    @media (max-width: 600px){
+      .magazine-title{ font-size:44px; letter-spacing:8px; }
+    }
+    .issue-info{
+      font-family:'IBM Plex Sans',sans-serif; font-size:11px; color:var(--muted);
+      letter-spacing:1px; text-transform:uppercase;
+      display:flex; gap:10px; align-items:center; justify-content:center;
+    }
+    .meta-link{ 
+      position:relative; text-decoration:none; color:#444; padding-bottom:2px; 
+    }
+    .meta-link::after{ 
+      content:""; position:absolute; left:0; bottom:-1px; height:1px; width:0%; 
+      background:currentColor; transition:width .25s; 
+    }
+    .meta-link:hover::after{ width:100%; }
+    .dot{ opacity:.5; }
+
+    /* Article */
+    .article-header{ margin:60px 0 40px 0; }
+    .section-title{
+      font-family:'IBM Plex Sans',sans-serif; font-size:11px; color:#666;
+      letter-spacing:2px; text-transform:uppercase; margin-bottom:20px; font-weight:500;
+    }
+    .article-title{
+      font-size:36px; font-weight:400; line-height:1.1; color:#000; margin:0 0 20px 0;
+    }
+    .article-subtitle{
+      font-size:20px; font-style:italic; color:#555; margin:0 0 30px 0; font-weight:400;
+    }
+
+    .dropcap{
+      float:left; font-size:70px; line-height:50px; padding-top:8px; padding-right:8px; padding-left:3px;
+      font-weight:400; color:#000;
+    }
+    .article-content{ 
+      font-size:18px; line-height:1.7; color:#2c2c2c; text-align:justify; hyphens:auto; 
+    }
+    .article-content p{ margin:0 0 20px 0; }
+
+    .subheading{ 
+      font-size:22px; font-weight:600; color:#000; margin:40px 0 20px 0; line-height:1.3; 
+    }
+
+    /* Service boxes - using case-box pattern */
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin: 40px 0;
+    }
+
+    .service-box{
+      border:1px solid #dadada;   
+      padding:28px;
+      text-align:left;
+      background:transparent;
+    }
+
+    .service-title{
+      font-family:'Aboreto',serif; font-size:20px; font-weight:400; color:#000; 
+      margin:0 0 14px 0; letter-spacing:2px; text-transform:uppercase;
+      text-align:center;
+    }
+
+    .service-description{
+      font-family:'Crimson Text',serif; font-size:16px; color:#555; 
+      margin:0 0 22px 0; line-height:1.5; text-align:center;
+    }
+
+    .service-details {
+      margin: 20px 0;
+      text-align: left;
+    }
+
+    .service-details h4 {
+      font-family:'IBM Plex Sans',sans-serif; font-size:12px; 
+      color:var(--muted); letter-spacing:1px; text-transform:uppercase; 
+      margin:0 0 10px 0; font-weight:500;
+    }
+
+    .service-details ul {
+      margin: 0 0 15px 20px;
+      padding: 0;
+    }
+
+    .service-details li {
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 6px;
+      color: #2c2c2c;
+    }
+
+    .service-pricing {
+      font-family:'IBM Plex Sans',sans-serif; font-size:14px; 
+      color:var(--ink); font-weight:500; text-align:center;
+      margin:15px 0 20px 0; padding-top:15px; 
+      border-top:1px solid var(--soft);
+    }
+
+    .service-button{
+      background-color:#000; color:#fff; font-family:'IBM Plex Sans',sans-serif; 
+      font-size:12px; font-weight:500; text-transform:uppercase; letter-spacing:2px; 
+      padding:12px 30px; border:none; cursor:pointer; display:block;
+      transition: background-color .25s; text-decoration:none; text-align:center;
+      margin: 0 auto;
+    }
+    .service-button:hover{ background-color:#333; }
+
+    .availability-note {
+      font-family:'IBM Plex Sans',sans-serif; font-size:11px; 
+      color:var(--muted); text-align:center; margin-top:8px;
+      font-style:italic;
+    }
+
+    /* Main CTA box */
+    .case-box{
+      border:1px solid #dadada;   
+      padding:28px;
+      margin:40px 0;
+      text-align:center;
+      background:transparent;
+    }
+    .case-title{
+      font-family:'Aboreto',serif; font-size:24px; font-weight:400; color:#000; 
+      margin:0 0 14px 0; letter-spacing:2px; text-transform:uppercase;
+    }
+    .case-lead{
+      font-family:'Crimson Text',serif; font-size:16px; color:#555; 
+      margin:0 0 22px 0; line-height:1.5;
+    }
+    .case-button{
+      background-color:#000; color:#fff; font-family:'IBM Plex Sans',sans-serif; 
+      font-size:14px; font-weight:500; text-transform:uppercase; letter-spacing:2px; 
+      padding:15px 40px; border:none; cursor:pointer; display:inline-block;
+      transition: background-color .25s; text-decoration:none;
+    }
+    .case-button:hover{ background-color:#333; }
+
+    @media (max-width: 600px) {
+      .service-grid {
+        gap: 30px;
+      }
+    }
+
+    @media print{
+      body{ font-size:14px; }
+      .magazine-title{ font-size:36px; }
+      .article-title{ font-size:28px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Back to Home -->
+  <a href="../" class="back-link">← Back to Home</a>
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <h1 class="magazine-title">The CXO Resume</h1>
+    <div class="issue-info">
+      <a class="meta-link" href="../thought-leadership/">Thought Leadership</a>
+      <span class="dot">•</span>
+      <a class="meta-link" href="../career-edition/">Career Edition</a>
+    </div>
+  </header>
+
+  <article>
+    <div class="article-header">
+      <div class="section-title">Services / Offerings / Executive Solutions</div>
+      <h1 class="article-title">All Services</h1>
+      <h2 class="article-subtitle">Comprehensive executive career services designed for leaders ready for what's next.</h2>
+    </div>
+
+    <div class="article-content">
+      <p><span class="dropcap">E</span>very service we offer serves a single purpose: translating your leadership experience into strategic advantage. From executive resumes to board positioning, each offering is crafted with the precision and sophistication that C-suite transitions demand.</p>
+
+      <div class="service-grid">
+        
+        <!-- Executive Resume -->
+        <div class="service-box">
+          <h3 class="service-title">Executive Resume</h3>
+          <p class="service-description">Bespoke resume writing that transforms career history into strategic positioning for boards, investors, and executive search.</p>
+          
+          <div class="service-details">
+            <h4>What's Included</h4>
+            <ul>
+              <li>Discovery call and deep-dive interviews</li>
+              <li>Narrative architecture and positioning strategy</li>
+              <li>Executive resume (2-3 pages, crafted from scratch)</li>
+              <li>Strategic positioning narrative document</li>
+              <li>Two rounds of revisions and refinement</li>
+              <li>Multiple file formats for all applications</li>
+            </ul>
+            
+            <h4>Ideal For</h4>
+            <ul>
+              <li>CXOs seeking board positions</li>
+              <li>Executives navigating M&A transitions</li>
+              <li>Leaders with complex, non-linear careers</li>
+              <li>Senior professionals ready for C-suite roles</li>
+            </ul>
+          </div>
+          
+          <div class="service-pricing">Starting at $1,499</div>
+          <a href="../consultation/" class="service-button">Get Started</a>
+        </div>
+
+        <!-- LinkedIn Optimization -->
+        <div class="service-box">
+          <h3 class="service-title">LinkedIn Optimization</h3>
+          <p class="service-description">Professional LinkedIn rewriting that aligns your digital presence with your executive positioning and leadership narrative.</p>
+          
+          <div class="service-details">
+            <h4>What's Included</h4>
+            <ul>
+              <li>Complete LinkedIn profile audit</li>
+              <li>Headline and summary rewrite</li>
+              <li>Experience section optimization</li>
+              <li>Skills and endorsements strategy</li>
+              <li>Content recommendations for thought leadership</li>
+              <li>Networking and outreach guidance</li>
+            </ul>
+            
+            <h4>Ideal For</h4>
+            <ul>
+              <li>Executives building thought leadership presence</li>
+              <li>Leaders seeking board visibility</li>
+              <li>CXOs in active job transitions</li>
+              <li>Senior professionals expanding networks globally</li>
+            </ul>
+          </div>
+          
+          <div class="service-pricing">$899 (standalone) | $599 (with resume)</div>
+          <a href="../consultation/" class="service-button">Get Started</a>
+        </div>
+
+        <!-- Board Bio -->
+        <div class="service-box">
+          <h3 class="service-title">Board Bio</h3>
+          <p class="service-description">Professional board biography development for governance roles, investor materials, and nomination committees.</p>
+          
+          <div class="service-details">
+            <h4>What's Included</h4>
+            <ul>
+              <li>Governance-focused career positioning</li>
+              <li>Multiple bio formats (short, medium, detailed)</li>
+              <li>Board skills matrix alignment</li>
+              <li>Industry expertise highlighting</li>
+              <li>Risk and compliance experience emphasis</li>
+              <li>Director questionnaire preparation</li>
+            </ul>
+            
+            <h4>Ideal For</h4>
+            <ul>
+              <li>Sitting executives seeking board roles</li>
+              <li>Former CXOs transitioning to portfolio careers</li>
+              <li>Industry leaders ready for governance</li>
+              <li>Executives with relevant board experience</li>
+            </ul>
+          </div>
+          
+          <div class="service-pricing">$799 (standalone) | $499 (with resume)</div>
+          <a href="../consultation/" class="service-button">Get Started</a>
+        </div>
+
+        <!-- Compensation Insights -->
+        <div class="service-box">
+          <h3 class="service-title">Compensation Insights</h3>
+          <p class="service-description">Strategic compensation advisory and market intelligence for executive-level negotiations and board discussions.</p>
+          
+          <div class="service-details">
+            <h4>What's Included</h4>
+            <ul>
+              <li>Executive compensation benchmarking</li>
+              <li>Industry and role-specific market data</li>
+              <li>Negotiation strategy and positioning</li>
+              <li>Equity and long-term incentive guidance</li>
+              <li>Board compensation structures overview</li>
+              <li>Confidential market intelligence briefing</li>
+            </ul>
+            
+            <h4>Ideal For</h4>
+            <ul>
+              <li>CXOs entering final-stage negotiations</li>
+              <li>Executives considering multiple offers</li>
+              <li>Leaders seeking board compensation guidance</li>
+              <li>Senior professionals benchmarking current packages</li>
+            </ul>
+          </div>
+          
+          <div class="service-pricing">$1,299 (when available)</div>
+          <a href="../consultation/" class="service-button">Get Started</a>
+          <p class="availability-note">*Subject to availability and engagement scope</p>
+        </div>
+
+      </div>
+
+      <h3 class="subheading">Service Philosophy</h3>
+      <p>Each service reflects the same editorial rigor and strategic thinking that defines our executive resume work. We do not offer templates or quick fixes. Every engagement is bespoke, every deliverable crafted to serve your specific positioning objectives and career trajectory.</p>
+
+      <h3 class="subheading">Combination Packages</h3>
+      <p>Most clients benefit from multiple services working in concert. A narrative-driven resume paired with LinkedIn optimization and board bio development creates a coherent leadership brand that opens doors across multiple channels. We offer combination pricing that recognizes this integrated approach.</p>
+
+      <!-- Main CTA -->
+      <div class="case-box">
+        <h3 class="case-title">Ready to Begin?</h3>
+        <p class="case-lead">Every executive situation is unique. Our discovery calls are designed to understand your specific needs and recommend the services that will serve your career objectives.</p>
+        <a href="../consultation/" class="case-button">Book Discovery Call</a>
+      </div>
+    </div>
+  </article>
+</body>
+</html>
